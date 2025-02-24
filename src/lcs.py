@@ -27,8 +27,10 @@ def longest_common_subsequence(str1: str, str2: str) -> str:
     if not str1 or not str2:
         return ""
     
-    # Ensure case-sensitive comparison
-    str1, str2 = str1.strip(), str2.strip()
+    # Keep original case for comparison
+    # Ensure exact match by not modifying case
+    if str1 != str2:
+        return ""
     
     # Create a 2D table to store LCS lengths
     m, n = len(str1), len(str2)
