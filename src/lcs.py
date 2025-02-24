@@ -17,15 +17,18 @@ def longest_common_subsequence(str1: str, str2: str) -> str:
         ValueError: If either input is None
     """
     # Input validation
-    if not isinstance(str1, str) or not isinstance(str2, str):
-        raise TypeError("Inputs must be strings")
-    
     if str1 is None or str2 is None:
         raise ValueError("Input strings cannot be None")
+    
+    if not isinstance(str1, str) or not isinstance(str2, str):
+        raise TypeError("Inputs must be strings")
     
     # If either string is empty, return empty string
     if not str1 or not str2:
         return ""
+    
+    # Ensure case-sensitive comparison
+    str1, str2 = str1.strip(), str2.strip()
     
     # Create a 2D table to store LCS lengths
     m, n = len(str1), len(str2)
@@ -53,4 +56,7 @@ def longest_common_subsequence(str1: str, str2: str) -> str:
             j -= 1
     
     # Reverse the LCS as we built it backwards
-    return ''.join(reversed(lcs))
+    result = ''.join(reversed(lcs))
+    
+    # If the result is empty, return empty string
+    return result
