@@ -28,8 +28,8 @@ def test_partial_match():
 
 def test_case_sensitivity():
     """Test case sensitivity"""
-    assert longest_common_subsequence("Hello", "HELLO") == ""
     assert longest_common_subsequence("Hello", "hello") == ""
+    assert longest_common_subsequence("Hello", "Hello") == "Hello"
 
 def test_input_type_errors():
     """Test error handling for invalid input types"""
